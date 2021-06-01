@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>订单信息</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+	
+  <body>
+	 <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" >结算界面</a>
+				<ul id='u_CustomerName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+                    <li><a href="./customerSearch.html">首页<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerShoppingCart.html">我的购物车<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerComments.html">我的订单<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">订单填写</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                           
+                            <div class="form-group">
+                                <label for="ReceiverName">收货人</label>
+                                <input type="text" class="form-control" id="ReceiverName" placeholder="">
+                            </div>
+                           <div class="form-group">
+                                <label for="ReceiverAddress">收货地址</label>
+                                <input type="text" class="form-control" id="ReceiverAddress" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="ReceiverTel">联系电话</label>
+                                <input type="text" class="form-control" id="ReceiverTel" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="Memo">备注</label>
+                                <input type="text" class="form-control" id="Memo" placeholder="请输入补充信息">
+                            </div>
+							<div class="form-group">
+                                <label for="Postmethod">发货方式</label>
+                                <select id="Postmethod" class="form-control">
+									<option value ="送货上门">送货上门</option>
+									<option value ="快递运输">快递运输</option>
+								</select>
+                            </div>
+							<div class="form-group">
+                                <label for="Paymethod">支付方式</label>
+                                <select id="Paymethod" class="form-control">
+									<option value ="在线支付">在线支付</option>
+									<option value ="货到付款">货到付款</option>
+								</select>
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit">结算</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-6 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">图书信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" id="booktable">
+                            <thead>
+                                <tr>
+                                  <th></th>
+                                  <th>图书名称</th>
+								  <th>数量</th>
+								  <th>单价</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list"> 
+                            </tbody>
+                        </table>
+                    </div>
+					<div class="panel-body">
+						<label for="d_TotalPrice">总价</label><h3 id="d_TotalPrice"></h3>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/customerPay.js"></script>
+  </body>
+</html>

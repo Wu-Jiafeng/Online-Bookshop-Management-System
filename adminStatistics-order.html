@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="css/dragit.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OnlineBookshop管理后台</a>
+				<ul id='u_AdminName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="adminBooks.html">图书信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminOrders.html">订单信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminCustomers.html">用户信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminComments.html">商品评论维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminPurchases.html">进货信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminParameter.html">后台参数维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics.html">图书检索统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-customer.html">用户登录统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">订单统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">一年内各书销量</h3>
+                    </div>
+                    <div class="panel-body" id="svg2">
+						<i>Use your mouse to click and drag countries (represented as circles) to explore +12 months of Item Amount and Order Amount indicators.</i></p>
+
+						<div id="chart11" style="margin:0px"></div>
+						<span id="min-time">January</span> 
+						<input type="range" name="points" min="1" max="12" step="1" value="0" id="slider-time" style="width:900px">
+						<span id="max-time">December</span>
+                    </div>
+                </div>
+
+        </div>
+		</div>
+        <div class="row">
+            <div class="col-md-12 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">一年内各品类销量</h3>
+                    </div>
+                    <div class="panel-body" id="svg3">
+						
+                    </div>
+                </div>
+
+        </div>
+		</div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/d3.v3.min.js"></script>
+	<script src="js/dragit.js"></script>
+	<script src="js/dragit-chart.js"></script>
+	<script src="js/Stacked_Area_Chart.js"></script>
+	<script src="js/adminStatistics-order.js"></script>		
+</body>
+
+</html>

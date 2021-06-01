@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/customerSignIn.css">
+  </head>
+<body style="background-image:url('pic.jpg');background-size:100%;">
+<!--返回首页--> 
+	<div align="right" style="position:absolute;top:2%;left: 92%;">
+		<button class="btn btn-primary" id="btnsubmit2">管理员登录</button>
+	</div>
+	<div style="position:absolute;top:45%;left: 33%;">
+	<div  style="font:bold 60px helvetica,arial,sans-serif;color: #F5DEB3;text-shadow:5px 5px 5px #333">欢迎进入12网上书店</div><br>
+		<div class="panel panel-default">
+            <div class="panel-body">
+                <form accept-charset="UTF-8">
+                    <div class="form-group">
+                        <label for="u_CustomerName">用 户 名</label>
+                        <input type="text" class="form-control" id="u_CustomerName" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="u_CustomerPwd">密码</label>
+                        <input type="password" class="form-control" id="u_CustomerPwd" placeholder="请输入密码">
+                    </div>
+                    <button class="btn btn-primary" id="btnsubmit">登录</button>
+					<button class="btn btn-primary" id="btnsubmit0">立即注册</button>
+					<button class="btn btn-primary" id="btnsubmit1">忘记密码？（暂未实现）</button>
+                </form>
+            </div>
+        </div>
+	</div>
+	<script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/customerSignIn.js"></script>
+</body>
+</html>

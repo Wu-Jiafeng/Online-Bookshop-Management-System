@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/styleForChart.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+	<link rel="stylesheet" type="text/css" href="css/sequences.css"/>
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OnlineBookshop管理后台</a>
+				<ul id='u_AdminName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="adminBooks.html">图书信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminOrders.html">订单信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminCustomers.html">用户信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminComments.html">商品评论维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminPurchases.html">进货信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminParameter.html">后台参数维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics.html">图书检索统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">用户登录统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-order.html">订单统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+			<div class="col-md-4 cl-sm-12">
+				<div class="panel panel-card people-panel" style="background-color:#00a0e9">
+					<div class="panel-title">
+						<h5 class="no-margin m-b">当前在线人数</h5>
+					</div>
+					<div class="panel-body">
+						<div id="sensor-moni-text" style="height:250px;">
+							<h1></h1>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-card people-panel" style="background-color:#00a0c7">
+					<div class="panel-title">
+						<h5 class="no-margin m-b">当前总用户数</h5>
+					</div>
+					<div class="panel-body">
+						<div id="sensor-moni-text1" style="height:250px;">
+							<h1></h1>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-card people-panel" style="background-color:#00a0a5">
+					<div class="panel-title">
+						<h5 class="no-margin m-b">当前总会员数</h5>
+					</div>
+					<div class="panel-body">
+						<div id="sensor-moni-text2" style="height:250px;">
+							<h1></h1>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="col-md-8 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">顾客登录信息统计</h3>
+                    </div>
+                    <div class="panel-body" id="svg1">
+						<div id="charts">
+							<div id="hour-chart" class="chart">
+								<div class="title">Time of Day</div>
+							</div>
+							<div id="delay-chart" class="chart">
+								<div class="title">Sex (0-Female/1-Male)</div>
+							</div>
+							<div id="distance-chart" class="chart">
+								<div class="title">Login Times</div>
+							</div>
+							<div id="date-chart" class="chart">
+								<div class="title">Date</div>
+							</div>
+						</div>
+
+						<aside id="totals"><span id="active">-</span> of <span id="total">-</span> login selected.</aside>
+
+						<div id="lists">
+							<div id="flight-list" class="list" style="background-color:#fffff0"></div>
+						</div>
+                    </div>
+                </div>
+			</div>
+		</div>
+   		<div class="row">
+            <div class="col-md-12 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">用户组成</h3>
+                    </div>
+                    <div class="panel-body" id="svg2">
+						<div id="main">
+							<div id="sequence"></div>
+							<div id="chart22">
+								<div id="explanation" style="visibility: hidden;">
+									<span id="percentage11"></span><br/>
+									of visits begin with this sequence of pages
+								</div>
+							</div>
+						</div>
+						<div id="sidebar">
+							<input type="checkbox" id="togglelegend"> Legend<br/>
+							<div id="legend" style="visibility: hidden;"></div>
+						</div>
+                    </div>
+                </div>
+
+        </div>
+		</div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/d3.v3.min.js"></script>
+	<script src="js/crossfilter.v1.min.js"></script>
+	<script src="js/chart-crossfilter.js"></script>
+	<script src="js/adminStatistics-customer.js"></script>
+	<script type="text/javascript" src="js/sequences.js"></script>
+	<script type="text/javascript">
+      // Hack to make this example display correctly in an iframe on bl.ocks.org
+      d3.select(self.frameElement).style("height", "700px");
+	</script>
+	
+</body>
+
+</html>

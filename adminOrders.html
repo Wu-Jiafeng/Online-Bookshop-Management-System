@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OnlineBookshop管理后台</a>
+				<ul id='u_AdminName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="adminBooks.html">图书信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">订单信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminCustomers.html">用户信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminComments.html">商品评论维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminPurchases.html">进货信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminParameter.html">后台参数维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics.html">图书检索统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-customer.html">用户登录统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-order.html">订单统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">订单编辑</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                            <div class="form-group">
+                                <label for="u_OrderID">订单编号</label>
+                                <input type="text" class="form-control" id="u_OrderID" placeholder="请输入订单编号">
+                            </div>
+                           <div class="form-group">
+                                <label for="u_CustomerName">用户名</label>
+                                <input type="text" class="form-control" id="u_CustomerName" placeholder="请输入用户名">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PostStatus">发货状态</label>
+								<select id="u_PostStatus" class="form-control">
+									<option value ="">未知</option>
+									<option value ="已发货">已发货</option>
+									<option value ="未发货">未发货</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ReceiveStatus">收货状态</label>
+								<select id="u_ReceiveStatus" class="form-control">
+									<option value ="">未知</option>
+									<option value ="已收货">已收货</option>
+									<option value ="未收货">未收货</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PayStatus">支付状态</label>
+								<select id="u_PayStatus" class="form-control">
+									<option value ="">未知</option>
+									<option value ="已支付">已支付</option>
+									<option value ="未支付">未支付</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_OrderStatus">交易状态</label>
+								<select id="u_OrderStatus" class="form-control">
+									<option value ="">未知</option>
+									<option value ="交易成功">交易成功</option>
+									<option value ="交易失败">交易失败</option>
+									<option value ="交易进行中">交易进行中</option>
+								</select>
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit0">查询</button>
+                            <button class="btn btn-primary" id="btnsubmit">提交添加</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">订单列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" id="ordertable">
+                            <thead>
+                                <tr>
+                                 <th>编号</th>
+                                 <th>收货人</th>
+                                 <th>发货状态</th>
+                                    <th>收货状态</th>
+                                    <th>支付状态</th>
+                                    <th>交易状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="pagecount"></div>
+        </div>
+    </div>
+    <!-- model delete -->
+    <div class="modal fade" id="deleModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">警告</h4>
+                </div>
+                <div class="modal-body">
+                    删除无法恢复
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取消</button>
+                        <button type="button" class="btn btn-primary" id="confirmDelete">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- model update -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="" style="overflow: auto">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                            <!-- <div class="form-group">
+                                <label for="u_BookID">图书编号</label>
+                                <input type="text" class="form-control" id="u_BookID" placeholder="请输入图书编号">
+                            </div> -->
+                           <div class="form-group">
+                                <label for="u_CustomerID_edit">用户编号</label>
+                                <input type="text" class="form-control" id="u_CustomerID_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_OrderDate_edit">下单时间</label>
+                                <input type="text" class="form-control" id="u_OrderDate_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Postmethod_edit">送货方式</label>
+								<select id="u_Postmethod_edit" class="form-control">
+									<option value ="送货上门">送货上门</option>
+									<option value ="快递运输">快递运输</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Paymethod_edit">支付方式</label>
+								<select id="u_Paymethod_edit" class="form-control">
+									<option value ="在线支付">在线支付</option>
+									<option value ="货到付款">货到付款</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ReceiverName_edit">收货人姓名</label>
+                                <input type="text" class="form-control" id="u_ReceiverName_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ReceiverAddress_edit">收货人地址</label>
+                                <input type="text" class="form-control" id="u_ReceiverAddress_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ReceiverTel_edit">收货人电话</label>
+                                <input type="text" class="form-control" id="u_ReceiverTel_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Memo_edit">备注</label>
+                                <input type="text" class="form-control" id="u_Memo_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Totalprice_edit">总价</label>
+                                <input type="text" class="form-control" id="u_Totalprice_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PostStatus_edit">发货状态</label>
+								<select id="u_PostStatus_edit" class="form-control">
+									<option value ="已发货">已发货</option>
+									<option value ="未发货">未发货</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ReceiveStatus_edit">收货状态</label>
+								<select id="u_ReceiveStatus_edit" class="form-control">
+									<option value ="已收货">已收货</option>
+									<option value ="未收货">未收货</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PayStatus_edit">支付状态</label>
+								<select id="u_PayStatus_edit" class="form-control">
+									<option value ="已支付">已支付</option>
+									<option value ="未支付">未支付</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_OrderStatus_edit">交易状态</label>
+                                <select id="u_OrderStatus_edit" class="form-control">
+									<option value ="交易成功">交易成功</option>
+									<option value ="交易失败">交易失败</option>
+									<option value ="交易进行中">交易进行中</option>
+								</select>
+                            </div>
+                        </form>
+                        <div class="panel-body">
+                                <table class="table" id="itemtable">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>书名</th>
+                                            <th>购买数量</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="authorlist">
+                                
+                                    </tbody>
+                                </table>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="InsertItem">添加本订单商品信息</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdate">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updateItemModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">商品编辑</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                           <div class="form-group">
+                                <label for="u_Amount_edit">购买数量</label>
+                                <input type="text" class="form-control" id="u_Amount_edit" placeholder="">
+                            </div>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="confirmupdatecancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdateItem">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="insertItemModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">商品信息</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                           <div class="form-group">
+                                <label for="u_BookID_insert">图书编号</label>
+                                <input type="text" class="form-control" id="u_BookID_insert" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Amount_insert">购买数量</label>
+                                <input type="text" class="form-control" id="u_Amount_insert" placeholder="请输入一个正整数">
+                            </div>
+                            
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="confirminsertcancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmInsertItem">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/adminOrders.js"></script>
+</body>
+
+</html>

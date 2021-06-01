@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12网上书店</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/customerSignIn.css">
+  </head>
+<body style="background-size:100%;">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">12网上书店</a>
+				<ul id='u_CustomerName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+                    <li><a href="./customerSearch.html">首页<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerShoppingCart.html">我的购物车<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerComments.html">我的订单<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+	
+	<div class="container-fluid">
+        <div class="row">
+			<div class="col-md-12 column">
+			    <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                           <div class="form-group">
+                                <label for="u_BookName">图书快搜</label>
+                                <input type="text" class="form-control" id="u_BookName" placeholder="请输入书名（支持模糊查询）">
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit">搜索</button>
+							<button class="btn btn-primary" id="btnsubmit0">高级搜索</button>
+                        </form>
+                    </div>
+                </div>
+			</div>
+			</div>
+        </div>
+    </div>
+<div style="padding:15px;">
+	<div class="row clearfix">
+		<div class="col-md-6 column">
+			<div class="carousel slide" id="carousel-707811">
+				<ol class="carousel-indicators">
+					<li class="active" data-target="#carousel-707811" data-slide-to="0">
+					</li>
+					<li data-target="#carousel-707811" data-slide-to="1">
+					</li>
+					<li data-target="#carousel-707811" data-slide-to="2">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div id="bpic1" class="item active"><img alt="" src="pic.jpg" /></div>
+					<div id="bpic2" class="item"><img alt="" src="pic.jpg" /></div>
+					<div id="bpic3" class="item"><img alt="" src="pic.jpg" /></div>
+				</div> <a class="left carousel-control" href="#carousel-707811" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-707811" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+		</div>
+		<div class="col-md-6 column">
+			<div class="panel panel-default">
+                <div class="panel-heading">
+                    
+                </div>
+                <div class="panel-body">
+				<div class="col-md-6 column">
+					<label for="d_BookName">书名：</label><h3 id="d_BookName"></h3><br><br>
+					<label for="d_BookUnitPrice">单价：</label><h3 id="d_BookUnitPrice">1111</h3><br>
+					<label for="d_BookSMemberPrice">会员价：</label><h3 id="d_BookSMemberPrice">1111</h3><br>
+                </div>
+				<div class="col-md-6 column">
+					<label for="d_BookISBN">ISBN：</label><h3 id="d_BookISBN">1111</h3><br><br>
+					<label for="d_BookPress">出版社：</label><h3 id="d_BookPress">1111</h3><br>
+					<label for="d_BookType">分类：</label><h3 id="d_BookType">1111</h3><br>
+                </div>
+				<button class="btn btn-primary" id="btnsubmit1">加入购物车</button>
+				<button class="btn btn-primary" id="btnsubmit2">立即购买</button>
+				</div>
+            </div>
+		</div>
+	</div>
+</div>
+<div style="padding:15px;">
+	<div class="row clearfix">
+		<div class="col-md-6 column">
+			<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">详细信息</h3>
+				</div>
+                <div class="panel-body">
+					<label for="d_BookPubDate">出版日期：</label><h5 id="d_BookPubDate"></h5>
+					<label for="d_BookSize">开本：</label><h5 id="d_BookSize"></h5>
+					<label for="d_BookVersion">版次：</label><h5 id="d_BookVersion"></h5>
+					<label for="d_BookPages">页数：</label><h5 id="d_BookPages"></h5>
+					<label for="d_Author">作者/译者：</label><h5 id="d_Author"></h5>
+				</div>
+            </div>
+		</div>
+		<div class="col-md-6 column">
+			<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">图书简介</h3>
+				</div>
+				<div class="panel-body">
+					<label for="d_CHN">中文简介：</label><h5 id="d_CHN"></h5>
+				</div>
+				<div class="panel-body">
+					<label for="d_ENG">英文简介：</label><h5 id="d_ENG"></h5>
+				</div>
+            </div>
+		</div>
+		<div class="col-md-12 column">
+			<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">评论</h3>
+				</div>
+				<div class="panel-body">
+					<label for="d_avgScore">平均得分：</label><h3 id="d_avgScore"></h3>
+				</div>
+				<div class="panel-body">
+					<table class="table" id="booktable">
+						<thead><tr>
+							<th>用户名</th>
+							<th>打分</th>
+							<th>评论时间</th>
+							<th>评论内容</th>
+						</tr></thead>
+						<tbody id="list">
+									
+						</tbody>
+					</table>
+				</div>
+            </div>
+		</div>
+	</div>
+</div>
+    <div class="modal fade" id="insertShoppingCartModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                   <form>
+                        <div class="form-group">
+                            <label for="u_Amount_insert">购买数量</label>
+                            <input type="text" class="form-control" id="u_Amount_insert" placeholder="">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="confirminsertcancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmInsertShoppingCart">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+	<script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/customerBookDetail.js"></script>
+</body>
+</html>

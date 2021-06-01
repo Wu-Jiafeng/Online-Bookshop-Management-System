@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>注册</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/customerSignIn.css">
+  </head>
+<body style="background-image:url('pic.jpg');background-size:100%;">
+<!--返回首页--> 
+	<div align="right" style="position:absolute;top:2%;left: 92%;">
+		<button class="btn btn-primary" id="btnsubmit2">已有账号？</button>
+	</div>
+  	<div style="position:absolute;top:27%;left: 25%;">
+	<div align="center" style="font:bold 60px helvetica,arial,sans-serif;color: #F5DEB3;text-shadow:5px 5px 5px #333">欢迎进入12网上书店</div><br>
+		<div class="panel panel-default">
+            <div class="panel-body">
+                <form accept-charset="UTF-8">
+					<div class="col-md-6 cl-sm-12">
+                    <div class="form-group">
+                        <label for="u_CustomerName">用户名</label>
+                        <input type="text" class="form-control" id="u_CustomerName" placeholder="请输入用户名">
+                    </div>
+					<div class="form-group">
+                        <label for="u_CustomerTName">真实姓名</label>
+                        <input type="text" class="form-control" id="u_CustomerTName" placeholder="请输入真实姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="u_CustomerPwd">登录密码</label>
+                        <input type="password" class="form-control" id="u_CustomerPwd" placeholder="请输入密码,密码长度须大于4">
+                    </div>
+					<div class="form-group">
+                        <label for="u_CustomerPwd_confirmed">确认密码</label>
+                        <input type="password" class="form-control" id="u_CustomerPwd_confirmed" placeholder="请再次输入您的密码">
+                    </div>
+					</div>
+					<div class="col-md-6 cl-sm-12">
+					<div class="form-group">
+                        <label for="u_CustomerSex">性别</label>
+						<select id="u_CustomerSex" class="form-control">
+							<option value ="">未知</option>
+							<option value ="F">男</option>
+							<option value ="M">女</option>
+						</select>
+                    </div>
+					<div class="form-group">
+                        <label for="u_CustomerTel">联系电话</label>
+                        <input type="text" class="form-control" id="u_CustomerTel" placeholder="请输入您的联系电话">
+                    </div>
+					<div class="form-group">
+                        <label for="u_CustomerEmail">E-Mail</label>
+						<input type="text" id="u_CustomerEmail" placeholder="请输入您的电子邮箱">
+						@<select id="u_CustomerEmail_domain">
+							<option value="@pku.edu.cn" selected>pku.edu.cn</option>
+							<option value="@126.com">126.com</option>
+							<option value="@163.com">163.com</option>
+							<option value="@qq.com">qq.com</option>
+						</select>
+                    </div>
+					<div class="form-group">
+                        <label for="u_CustomerQuestion">密保问题</label>
+                        <input type="text" class="form-control" id="u_CustomerQuestion" placeholder="请输入您的密保问题">
+                    </div>
+					<div class="form-group">
+                        <label for="u_CustomerAnswer">密保答案</label>
+                        <input type="text" class="form-control" id="u_CustomerAnswer" placeholder="请输入您的密保答案">
+                    </div>
+					</div>
+                    <button class="btn btn-primary" id="btnsubmit">立即注册</button>
+					<button class="btn btn-primary" type="reset">重新填写</button>
+                </form>
+            </div>
+        </div>
+	</div>
+	<script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/customerRegister.js"></script>
+</body>
+</html>

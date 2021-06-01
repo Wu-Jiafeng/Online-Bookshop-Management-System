@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OnlineBookshop管理后台</a>
+				<ul id='u_AdminName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="adminBooks.html">图书信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminOrders.html">订单信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminCustomers.html">用户信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminComments.html">商品评论维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">进货信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminParameter.html">后台参数维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics.html">图书检索统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-customer.html">用户登录统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-order.html">订单统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">进货信息编辑</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                            <div class="form-group">
+                                <label for="u_PurchaseID">进货编号</label>
+                                <input type="text" class="form-control" id="u_PurchaseID" placeholder="请输入进货编号">
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit0">查询</button>
+                            <button class="btn btn-primary" id="btnsubmit">提交添加</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">进货信息列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" id="purchasetable">
+                            <thead>
+                                <tr>
+                                 <th>编号</th>
+                                 <th>进货日期</th>
+                                 <th>总金额</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="pagecount"></div>
+        </div>
+    </div>
+    <!-- model delete -->
+    <div class="modal fade" id="deleModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">警告</h4>
+                </div>
+                <div class="modal-body">
+                    删除无法恢复
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取消</button>
+                        <button type="button" class="btn btn-primary" id="confirmDelete">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- model update -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="" style="overflow: auto">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                            <!-- <div class="form-group">
+                                <label for="u_BookID">图书编号</label>
+                                <input type="text" class="form-control" id="u_BookID" placeholder="请输入图书编号">
+                            </div> -->
+                           <div class="form-group">
+                                <label for="u_PurchaseDate_edit">进货日期</label>
+                                <input type="text" class="form-control" id="u_PurchaseDate_edit" placeholder="">
+                            </div>
+                        </form>
+                        <div class="panel-body">
+                                <table class="table" id="itemtable">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>图书名</th>
+                                            <th>进货单价</th>
+                                            <th>进货数量</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="itemlist">
+                                
+                                    </tbody>
+                                </table>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="InsertItem">添加本次进货图书信息</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdate">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updateItemModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">进货单品编辑</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                            <div class="form-group">
+                                <label for="u_UnitPrice_edit">进货单价</label>
+                                <input type="text" class="form-control" id="u_UnitPrice_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ItemNum_edit">进货数量</label>
+                                <input type="text" class="form-control" id="u_ItemNum_edit" placeholder="">
+                            </div>
+                            
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="confirmupdatecancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdateItem">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="insertItemModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">进货单品</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                           <div class="form-group">
+                                <label for="u_ItemID_insert">图书编号</label>
+                                <input type="text" class="form-control" id="u_ItemID_insert" placeholder="需要先于图书信息维护添加相应图书信息">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_UnitPrice_insert">进货单价</label>
+                                <input type="text" class="form-control" id="u_UnitPrice_insert" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ItemNum_insert">进货数量</label>
+                                <input type="text" class="form-control" id="u_ItemNum_insert" placeholder="">
+                            </div>
+                            
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="confirminsertcancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmInsertItem">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/adminPurchases.js"></script>
+</body>
+
+</html>

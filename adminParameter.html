@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OnlineBookshop管理后台</a>
+				<ul id='u_AdminName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="adminBooks.html">图书信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminOrders.html">订单信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminCustomers.html">用户信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminComments.html">商品评论维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminPurchases.html">进货信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">后台参数维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics.html">图书检索统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-customer.html">用户登录统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-order.html">订单统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">后台参数编辑</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                            <div class="form-group">
+                                <label for="u_WebName">书店名称</label>
+                                <input type="text" class="form-control" id="u_WebName" placeholder="请输入书店名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_RegProvision">注册条款</label>
+                                <input type="text" class="form-control" id="u_RegProvision" placeholder="请输入注册条款">
+                            </div>
+                           <div class="form-group">
+                                <label for="u_Notice">公告</label>
+                                <input type="text" class="form-control" id="u_Notice" placeholder="请输入公告">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Address">企业地址</label>
+                                <input type="text" class="form-control" id="u_Address" placeholder="请输入企业地址">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Postcode">邮政编码</label>
+                                <input type="text" class="form-control" id="u_Postcode" placeholder="邮政编码">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Tel">联系电话</label>
+                                <input type="text" class="form-control" id="u_Tel" placeholder="请输入联系电话">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Copyright">版权</label>
+                                <input type="text" class="form-control" id="u_Copyright" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_WebLogo">网站Logo</label>
+                                <input type="text" class="form-control" id="u_WebLogo" placeholder="请输入图片地址">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">后台参数编辑</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                            <div class="form-group">
+                                <label for="u_Website">网站地址</label>
+                                <input type="text" class="form-control" id="u_Website" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PayMethod">支持支付方式</label>
+                                <input type="text" class="form-control" id="u_PayMethod" placeholder="在线支付/货到付款">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PostMethod">支持送货方式</label>
+                                <input type="text" class="form-control" id="u_PostMethod" placeholder="送货上门/快递运输">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PostPrice">送货费用</label>
+                                <input type="text" class="form-control" id="u_PostPrice" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_PostDescription">运输说明</label>
+                                <input type="text" class="form-control" id="u_PostDescription" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Service">售后服务</label>
+                                <input type="text" class="form-control" id="u_Service" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Law">使用法律</label>
+                                <input type="text" class="form-control" id="u_Law" placeholder="">
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit0">提交更改</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="pagecount"></div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/adminParameter.js"></script>
+</body>
+
+</html>

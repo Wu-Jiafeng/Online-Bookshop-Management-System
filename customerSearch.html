@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12网上书店</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/customerSignIn.css">
+  </head>
+<body style="background-size:100%;">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">12网上书店</a>
+				<ul id='u_CustomerName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+                    <li><a href="javascript:void(0)">首页<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerShoppingCart.html">我的购物车<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerComments.html">我的订单<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+	
+	<div class="container-fluid">
+        <div class="row">
+			<div class="col-md-12 column">
+			    <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                           <div class="form-group">
+                                <label for="u_BookName">图书快搜</label>
+                                <input type="text" class="form-control" id="u_BookName" placeholder="请输入书名（支持模糊查询）">
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit">搜索</button>
+							<button class="btn btn-primary" id="btnsubmit0">高级搜索</button>
+                        </form>
+                    </div>
+                </div>
+			</div>
+			</div>
+        </div>
+    </div>
+<div style="padding:15px;">
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">猜你喜欢</h3>
+                </div>
+                <div class="panel-body">
+			<div class="carousel slide" id="carousel-707811">
+				<ol class="carousel-indicators">
+					<li class="active" data-target="#carousel-707811" data-slide-to="0">
+					</li>
+					<li data-target="#carousel-707811" data-slide-to="1">
+					</li>
+					<li data-target="#carousel-707811" data-slide-to="2">
+					</li>
+				</ol>
+				<div id="ooommm" class="carousel-inner">
+					<div id='bpic1' class="item active"><img alt="" src="pic.jpg" /><div class="carousel-caption"><h4>Third Thumbnail label</h4></div></div>
+					<div id='bpic2' class="item"><img alt="" src="pic.jpg" /></div>
+					<div id='bpic3' class="item"><img alt="" src="pic.jpg" /></div>
+				</div> <a class="left carousel-control" href="#carousel-707811" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-707811" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+			</div>
+            </div>
+		</div>
+		<div class="col-md-4 column">
+			<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">上月销量排行</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table" id="booktable">
+                        <thead>
+                            <tr>
+                            <th>名称</th>
+                            <th>图片</th>
+                            <th>类别</th>
+							<th>单价</th>
+								<th>会员价</th>
+								<th>库存</th>
+								<th>上月销量</th>
+                            </tr>
+                        </thead>
+                        <tbody id="list">      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+<div><h4 style="text-align:center;"></h4></div>
+	<script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/customerSearch.js"></script>
+</body>
+</html>

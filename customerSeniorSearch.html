@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body style="background-size:100%;">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">12网上书店</a>
+				<ul id='u_CustomerName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+                    <li><a href="./customerSearch.html">首页<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerShoppingCart.html">我的购物车<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="./customerComments.html">我的订单<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+		<form accept-charset="UTF-8">
+            <div class="col-md-6 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">高级搜索</h3>
+                    </div>
+                    <div class="panel-body">
+                            <div class="form-group">
+                                <label for="u_BookName">图书名称</label>
+                                <input type="text" class="form-control" id="u_BookName" placeholder="">
+                            </div>
+							<div class="form-group">
+                                <label for="u_BookISBN">ISBN</label>
+                                <input type="text" class="form-control" id="u_BookISBN" placeholder="">
+                            </div>
+							<div class="form-group">
+                                <label for="u_BookType">图书分类</label>
+								<select id="u_BookType" class="form-control">
+									<option value ="">未知</option>
+									<option value ="马克思主义、列宁主义、毛泽东思想、邓小平理论">马克思主义、列宁主义、毛泽东思想、邓小平理论</option>
+									<option value ="哲学、宗教">哲学、宗教</option>
+									<option value ="社会科学总论">社会科学总论</option>
+									<option value ="政治、法律">政治、法律</option>
+									<option value ="军事">军事</option>
+									<option value ="经济">经济</option>
+									<option value ="文化、科学、教育、体育">文化、科学、教育、体育</option>
+									<option value ="语言、文字">语言、文字</option>
+									<option value ="文学">文学</option>
+									<option value ="艺术">艺术</option>
+									<option value ="历史、地理">历史、地理</option>
+									<option value ="自然科学总论">自然科学总论</option>
+									<option value ="数理科学和化学">数理科学和化学</option>
+									<option value ="天文学、地球科学">天文学、地球科学</option>
+									<option value ="生物科学">生物科学</option>
+									<option value ="医药、卫生">医药、卫生</option>
+									<option value ="农业科学">农业科学</option>
+									<option value ="工业技术">工业技术</option>
+									<option value ="交通运输">交通运输</option>
+									<option value ="航空、航天">航空、航天</option>
+									<option value ="环境科学、劳动保护科学（安全科学）">环境科学、劳动保护科学（安全科学）</option>
+									<option value ="综合性图书">综合性图书</option>
+								</select>
+                            </div>
+							<div class="form-group">
+                                <label for="u_BookPress">出版社</label>
+                                <input type="text" class="form-control" id="u_BookPress" placeholder="">
+                            </div>
+							<div class="form-group">
+                                <label for="u_Author">作者姓名</label>
+                                <input type="text" class="form-control" id="u_Author" placeholder="请输入其中一个作者的姓名(支持模糊查询)">
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">高级搜索</h3>
+                    </div>
+                    <div class="panel-body">
+                            <div class="form-group">
+                                <label for="u_ENG">英文简介</label>
+                                <input type="text" class="form-control" id="u_ENG" placeholder="">
+                            </div>
+							<div class="form-group">
+                                <label for="u_CHN">中文简介</label>
+                                <input type="text" class="form-control" id="u_CHN" placeholder="">
+                            </div>
+							<div class="form-group">
+                                <label for="u_BookUnitPrice">单价</label>
+                                <input type="text" class="form-control" id="u_BookUnitPrice" placeholder="">
+                            </div>
+							<div class="form-group">
+                                <label for="u_BookDiscount">是否打折</label>
+								<select id="u_BookDiscount" class="form-control">
+									<option value ="">没关系</option>
+									<option value ="1">是</option>
+									<option value ="0">否</option>
+								</select>
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit">立即搜索</button>
+                    </div>
+                </div>
+            </div>
+		</form>
+            <div id="pagecount"></div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/customerSeniorSearch.js"></script>
+</body>
+
+</html>

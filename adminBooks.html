@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OnlineBookshop管理后台</a>
+				<ul id='u_AdminName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">图书信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminOrders.html">订单信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminCustomers.html">用户信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminComments.html">商品评论维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminPurchases.html">进货信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminParameter.html">后台参数维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics.html">图书检索统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-customer.html">用户登录统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-order.html">订单统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">图书编辑</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                            <div class="form-group">
+                                <label for="u_BookID">图书编号</label>
+                                <input type="text" class="form-control" id="u_BookID" placeholder="请输入图书编号">
+                            </div>
+                           <div class="form-group">
+                                <label for="u_BookName">图书名称</label>
+                                <input type="text" class="form-control" id="u_BookName" placeholder="请输入书名（支持模糊查询）">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_Author">作者姓名</label>
+                                <input type="text" class="form-control" id="u_Author" placeholder="请输入其中一个作者的姓名(支持模糊查询)">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ENG">英文简介</label>
+                                <input type="text" class="form-control" id="u_ENG" placeholder="请输入英文简介（支持模糊查询）">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CHN">中文简介</label>
+                                <input type="text" class="form-control" id="u_CHN" placeholder="请输入中文简介（支持模糊查询）">
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit0">查询</button>
+                            <button class="btn btn-primary" id="btnsubmit">提交添加</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">图书列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" id="booktable">
+                            <thead>
+                                <tr>
+                                 <th>编号</th>
+                                 <th>图书名称</th>
+                                 <th>图片</th>
+                                    <th>图书类别</th>
+                                    <th>图书库存</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="pagecount"></div>
+        </div>
+    </div>
+    <!-- model delete -->
+    <div class="modal fade" id="deleModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">警告</h4>
+                </div>
+                <div class="modal-body">
+                    删除无法恢复
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取消</button>
+                        <button type="button" class="btn btn-primary" id="confirmDelete">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- model update -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="" style="overflow: auto">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                            <!-- <div class="form-group">
+                                <label for="u_BookID">图书编号</label>
+                                <input type="text" class="form-control" id="u_BookID" placeholder="请输入图书编号">
+                            </div> -->
+                           <div class="form-group">
+                                <label for="u_BookName_edit">图书名称</label>
+                                <input type="text" class="form-control" id="u_BookName_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookISBN_edit">ISBN</label>
+                                <input type="text" class="form-control" id="u_BookISBN_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookType_edit">图书分类</label>
+								<select id="u_BookType_edit" class="form-control">
+									<option value ="">未知</option>
+									<option value ="马克思主义、列宁主义、毛泽东思想、邓小平理论">马克思主义、列宁主义、毛泽东思想、邓小平理论</option>
+									<option value ="哲学、宗教">哲学、宗教</option>
+									<option value ="社会科学总论">社会科学总论</option>
+									<option value ="政治、法律">政治、法律</option>
+									<option value ="军事">军事</option>
+									<option value ="经济">经济</option>
+									<option value ="文化、科学、教育、体育">文化、科学、教育、体育</option>
+									<option value ="语言、文字">语言、文字</option>
+									<option value ="文学">文学</option>
+									<option value ="艺术">艺术</option>
+									<option value ="历史、地理">历史、地理</option>
+									<option value ="自然科学总论">自然科学总论</option>
+									<option value ="数理科学和化学">数理科学和化学</option>
+									<option value ="天文学、地球科学">天文学、地球科学</option>
+									<option value ="生物科学">生物科学</option>
+									<option value ="医药、卫生">医药、卫生</option>
+									<option value ="农业科学">农业科学</option>
+									<option value ="工业技术">工业技术</option>
+									<option value ="交通运输">交通运输</option>
+									<option value ="航空、航天">航空、航天</option>
+									<option value ="环境科学、劳动保护科学（安全科学）">环境科学、劳动保护科学（安全科学）</option>
+									<option value ="综合性图书">综合性图书</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookPress_edit">出版社</label>
+                                <input type="text" class="form-control" id="u_BookPress_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookPubDate_edit">出版日期</label>
+                                <input type="datetime" class="form-control" id="u_BookPubDate_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookSize_edit">开本</label>
+                                <input type="text" class="form-control" id="u_BookSize_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookVersion_edit">版次</label>
+                                <input type="text" class="form-control" id="u_BookVersion_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookPages_edit">页数</label>
+                                <input type="text" class="form-control" id="u_BookPages_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_ENG_edit">英文简介</label>
+                                <input type="text" class="form-control" id="u_ENG_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CHN_edit">中文简介</label>
+                                <input type="text" class="form-control" id="u_CHN_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookPic_edit">插图</label>
+                                <input type="text" class="form-control" id="u_BookPic_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookUnitPrice_edit">单价</label>
+                                <input type="text" class="form-control" id="u_BookUnitPrice_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookSMemberPrice_edit">会员价</label>
+                                <input type="text" class="form-control" id="u_BookSMemberPrice_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_BookDiscount_edit">折扣</label>
+                                <input type="text" class="form-control" id="u_BookDiscount_edit" placeholder="">
+                            </div>
+                        </form>
+                        <div class="panel-body">
+                                <table class="table" id="authortable">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>作者姓名</th>
+                                            <th>作者类型</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="authorlist">
+                                
+                                    </tbody>
+                                </table>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="UpdateTokenize">更新本书简介词典</button>
+                    <button type="button" class="btn btn-primary" id="InsertAuthor">添加本书作者信息</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdate">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updateAuthorModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">作者编辑</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                           <div class="form-group">
+                                <label for="u_AuthorName_edit">作者姓名</label>
+                                <input type="text" class="form-control" id="u_AuthorName_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_AuthorType_edit">作者类型</label>
+								<select id="u_AuthorType_edit" class="form-control">
+									<option value ="作者">作者</option>
+									<option value ="译者">译者</option>
+								</select>
+                            </div>
+                            
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="confirmupdatecancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdateAuthor">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="insertAuthorModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">作者信息</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                           <div class="form-group">
+                                <label for="u_AuthorName_insert">作者姓名</label>
+                                <input type="text" class="form-control" id="u_AuthorName_insert" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_AuthorType_insert">作者类型</label>
+								<select id="u_AuthorType_insert" class="form-control">
+									<option value ="作者">作者</option>
+									<option value ="译者">译者</option>
+								</select>
+                            </div>
+                            
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="confirminsertcancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmInsertAuthor">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/adminBooks.js"></script>
+</body>
+</html>

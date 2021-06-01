@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>OnlineBookshop管理</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OnlineBookshop管理后台</a>
+				<ul id='u_AdminName_cookie' class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav"><li class="active"><a id='ByeBye' href="javascript:void(0);" οnclick="ByeBye()">退出登录</a></li></ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="adminBooks.html">图书信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminOrders.html">订单信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">用户信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminComments.html">商品评论维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminPurchases.html">进货信息维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="adminParameter.html">后台参数维护<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics.html">图书检索统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-customer.html">用户登录统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+				<ul class="nav navbar-nav">
+                    <li><a href="adminStatistics-order.html">订单统计<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 cl-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">用户编辑</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8">
+                            <div class="form-group">
+                                <label for="u_CustomerID">用户编号</label>
+                                <input type="text" class="form-control" id="u_CustomerID" placeholder="请输入用户编号">
+                            </div>
+                           <div class="form-group">
+                                <label for="u_CustomerName">用户名</label>
+                                <input type="text" class="form-control" id="u_CustomerName" placeholder="请输入用户名">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerSex">性别</label>
+								<select id="u_CustomerSex" class="form-control">
+									<option value ="">未知</option>
+									<option value ="F">男</option>
+									<option value ="M">女</option>
+								</select>
+                            </div>
+                            <button class="btn btn-primary" id="btnsubmit0">查询</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">用户列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" id="customertable">
+                            <thead>
+                                <tr>
+                                 <th>编号</th>
+                                 <th>用户名</th>
+                                 <th>登录次数</th>
+                                    <th>上次登录时间</th>
+                                    <th>是否为大会员</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="pagecount"></div>
+        </div>
+    </div>
+    <!-- model delete -->
+    <div class="modal fade" id="deleModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">警告</h4>
+                </div>
+                <div class="modal-body">
+                    删除无法恢复
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取消</button>
+                        <button type="button" class="btn btn-primary" id="confirmDelete">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- model update -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="" style="overflow: auto">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑</h4>
+                </div>
+                <div class="modal-body">
+                   <form>
+                            <!-- <div class="form-group">
+                                <label for="u_BookID">图书编号</label>
+                                <input type="text" class="form-control" id="u_BookID" placeholder="请输入图书编号">
+                            </div> -->
+                           <div class="form-group">
+                                <label for="u_CustomerName_edit">用户名</label>
+                                <input type="text" class="form-control" id="u_CustomerName_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerPwd_edit">密码</label>
+                                <input type="text" class="form-control" id="u_CustomerPwd_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerTName_edit">真实姓名</label>
+                                <input type="text" class="form-control" id="u_CustomerTName_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerSex_edit">性别</label>
+								<select id="u_CustomerSex_edit" class="form-control">
+									<option value ="">未知</option>
+									<option value ="F">男</option>
+									<option value ="M">女</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerTel_edit">电话号码</label>
+                                <input type="text" class="form-control" id="u_CustomerTel_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerEmail_edit">E-Mail</label>
+                                <input type="text" class="form-control" id="u_CustomerEmail_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerSMemberFlag_edit">是否为大会员</label>
+								<select id="u_CustomerSMemberFlag_edit" class="form-control">
+									<option value ="是">是</option>
+									<option value ="否">否</option>
+								</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerQuestion_edit">密保问题</label>
+                                <input type="text" class="form-control" id="u_CustomerQuestion_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_CustomerAnswer_edit">密保答案</label>
+                                <input type="text" class="form-control" id="u_CustomerAnswer_edit" placeholder="">
+                            </div>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirmUpdate">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div><h4 style="text-align:center;"></h4></div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/adminCustomers.js"></script>
+</body>
+
+</html>
